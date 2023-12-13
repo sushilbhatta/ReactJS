@@ -1,34 +1,8 @@
-import reactImg from "./assets/react-core-concepts.png";
 import { CORE_CONCEPTS } from "./data";
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-// generate the random number
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept";
+import TabButton from "./components/TabButton.jsx";
 
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-  return (
-    <header>
-      <img src={reactImg} alt='Stylized atom' />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept(props) {
-  return (
-    <li>
-      <img src={props.image} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description} </p>
-    </li>
-  );
-}
 function App() {
   return (
     <div>
@@ -38,7 +12,7 @@ function App() {
           <h2>Core Concepts</h2>
           <ul>
             <CoreConcept
-              title={CORE_CONCEPTS[0].titlr}
+              title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
               image={CORE_CONCEPTS[0].image}
             />
@@ -47,7 +21,18 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
-        <h2>Time to get started!</h2>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton>Components</TabButton>
+            {/* here the TabButton 
+            component is the parent and the content inside the tab button is 'children' a special prop that React provide.
+            here the children can simply be text, jsx code html code  */}
+            <TabButton>JSX</TabButton>
+            <TabButton>Props</TabButton>
+            <TabButton>State</TabButton>
+          </menu>
+        </section>
       </main>
     </div>
   );
