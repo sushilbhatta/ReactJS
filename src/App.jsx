@@ -3,9 +3,10 @@ import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton.jsx";
+import { EXAMPLES } from "./data";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("please click any topic");
+  const [selectedTopic, setSelectedTopic] = useState("components");
   function handleSelect(selectedButton) {
     // selectedButton => 'component' 'jsx' 'props' 'state';
     setSelectedTopic(selectedButton);
@@ -46,7 +47,13 @@ function App() {
             calling function by reference ie handleSelect()  directly
             is not allowed .*/}
           </menu>
-          {selectedTopic}
+          <div className='tab-content'>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
