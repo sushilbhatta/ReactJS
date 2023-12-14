@@ -10,8 +10,6 @@ function App() {
   function handleSelect(selectedButton) {
     // selectedButton => 'component' 'jsx' 'props' 'state';
     setSelectedTopic(selectedButton);
-    // console.log(selectedButton);
-    console.log(selectedTopic);
   }
   return (
     <div>
@@ -48,6 +46,7 @@ function App() {
             is not allowed .*/}
           </menu>
           <div className='tab-content'>
+            {/* here selectedTopic is 'string' type. */}
             <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
