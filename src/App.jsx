@@ -6,10 +6,23 @@ import TabButton from "./components/TabButton.jsx";
 import { EXAMPLES } from "./data";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
   function handleSelect(selectedButton) {
     // selectedButton => 'component' 'jsx' 'props' 'state';
     setSelectedTopic(selectedButton);
+  }
+  let tabContent = <p>Please select a topic.</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div className='tab-content'>
+        {/* here selectedTopic is 'string' type. */}
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
   }
   return (
     <div>
@@ -45,14 +58,7 @@ function App() {
             calling function by reference ie handleSelect()  directly
             is not allowed .*/}
           </menu>
-          <div className='tab-content'>
-            {/* here selectedTopic is 'string' type. */}
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {tabContent}
         </section>
       </main>
     </div>
